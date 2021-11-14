@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react'
 
-const SearchForm = ({setForm, initialForm, form, setJokes}) => {
+const SearchForm = ({setForm, form, setJokes}) => {
 
   const changeHandler = (e) => {
     setForm({
@@ -12,7 +12,9 @@ const SearchForm = ({setForm, initialForm, form, setJokes}) => {
   const submitHandler = (e) => {
     e.preventDefault();
     searchJokes();
-    setForm(initialForm);
+    setForm({
+      search: ''
+    });
   };
 
   const searchJokes = async () => {
@@ -25,7 +27,6 @@ const SearchForm = ({setForm, initialForm, form, setJokes}) => {
   }
 
 
-
   return (
     <form>
     <label htmlFor='search'>Search</label>Î
@@ -33,6 +34,7 @@ const SearchForm = ({setForm, initialForm, form, setJokes}) => {
       id='search'
       type="text"
       name='search'
+      value={form.search}
       placeholder="Search"
       onChange={changeHandler} />
     <button type='submit' onClick={submitHandler}>Submit</button>

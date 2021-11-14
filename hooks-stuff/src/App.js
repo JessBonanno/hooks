@@ -3,13 +3,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SearchForm from './components/searchForm';
 
-const initialForm = {
-  search: '',
-};
-
 
 const App = () => {
-  const [form, setForm] = useState(initialForm);
+  const [form, setForm] = useState({
+    search: '',
+  });
   const [jokes, setJokes] = useState([]);
   const [initialJoke, setInitialJoke] = useState('');
 
