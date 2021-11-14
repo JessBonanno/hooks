@@ -9,30 +9,30 @@ const initialForm = {
 
 const App = () => {
   const [form, setForm] = useState(initialForm);
-
+  const [jokes, setJokes] = useState([]);
 
   const changeHandler = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
-    })
+    });
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
     searchJokes();
+    setForm(initialForm);
   }
 
   const searchJokes = async() => {
     try {
       const jokes = await axios.get(`https://api.chucknorris.io/jokes/search?query=${form.search}`);
       console.log(jokes.data);
+      setJokes(jokes.data.result)
     } catch (err) {
       console.error(err);
     }
-
   }
-
   return (
     <div className="App">
       <form>
