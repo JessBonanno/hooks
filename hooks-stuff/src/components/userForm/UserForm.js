@@ -15,11 +15,21 @@ const UserForm = () => {
     })
   };
 
-  console.log(userInfo);
+  const submitForm = (e) => {
+    e.preventDefault();
+    console.log('submitted');
+    console.log(userInfo)
+    setUserInfo({
+      name: '',
+      password: '',
+      email: '',
+      phone: '',
+    })
+  }
 
 
   return (
-    <form>
+    <form onSubmit={submitForm}>
       <input
         onChange={handleChanges}
         name='name'
