@@ -9,6 +9,7 @@ const App = () => {
   const [form, setForm] = useState({
     search: '',
   });
+  // eslint-disable-next-line no-unused-vars
   const [jokes, setJokes] = useState([]);
   const [initialJoke, setInitialJoke] = useState('');
 
