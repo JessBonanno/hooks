@@ -24,7 +24,7 @@ const App = () => {
     setForm(initialForm);
   }
 
-  const searchJokes = async() => {
+  const searchJokes = async () => {
     try {
       const jokes = await axios.get(`https://api.chucknorris.io/jokes/search?query=${form.search}`);
       console.log(jokes.data);
@@ -37,15 +37,20 @@ const App = () => {
     <div className="App">
       <form>
         <label htmlFor='search'>Search</label>Î
-        <input 
-        id='search' 
-        type="text" 
-        name='search' 
-        value={form.search}
-        placeholder="Search" 
-        onChange={changeHandler} />
+        <input
+          id='search'
+          type="text"
+          name='search'
+          value={form.search}
+          placeholder="Search"
+          onChange={changeHandler} />
         <button type='submit' onClick={submitHandler}>Submit</button>
       </form>
+      <section>
+        {jokes.length && jokes.map(joke => {
+          return <p key={joke.id}>{joke.value}</p>
+        })}
+      </section>
     </div>
   );
 }
