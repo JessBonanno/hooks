@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SearchForm from './components/searchForm';
+import UserForm from './components/userForm';
 
 
 const App = () => {
@@ -33,15 +34,7 @@ const App = () => {
         setForm={setForm}
         setJokes={setJokes}
         initialJoke={initialJoke} />
-      <section>
-        {jokes.length ? jokes.map(joke => {
-          return (
-            <p key={joke.id}>{joke.value}</p>
-          )
-        }) :
-          <p>{initialJoke.value}</p>
-        }
-      </section>
+        <UserForm/>
     </div>
   );
 }
